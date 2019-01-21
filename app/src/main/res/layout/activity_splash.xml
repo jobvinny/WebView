@@ -30,7 +30,6 @@
             android:layout_gravity="center"
             android:text="@string/slogan"
            />
-        // android:text="The Hope Of Tomorrow"/>
 
         <ProgressBar
             android:id="@+id/progressBar"

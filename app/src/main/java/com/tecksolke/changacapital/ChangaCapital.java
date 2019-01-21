@@ -27,7 +27,7 @@ import android.widget.Toast;
 public class ChangaCapital extends AppCompatActivity {
 
     //String url = "https://changacapital.com/androidLogin";
-    String url = "https://changacapital.com/login";
+    String url = "https://ecomatt.co/";
     WebView changacapitalview;
     private ProgressBar spinner;
     FloatingActionButton brefresh;
