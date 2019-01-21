@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.tecksolke.changacapital.chama404"
+    tools:context="com.tecksolke.changacapital.Error404"
     android:background="@mipmap/splash">
 
     <LinearLayout

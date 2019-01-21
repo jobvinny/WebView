@@ -1,22 +1,15 @@
 package com.tecksolke.changacapital;
 
-import android.annotation.SuppressLint;
-import android.app.DownloadManager;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
-import android.net.Uri;
-import android.os.Environment;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
-import android.webkit.CookieManager;
 import android.webkit.CookieSyncManager;
-import android.webkit.DownloadListener;
-import android.webkit.URLUtil;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
@@ -24,7 +17,7 @@ import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-public class ChangaCapital extends AppCompatActivity {
+public class MainPage extends AppCompatActivity {
 
     //String url = "https://changacapital.com/androidLogin";
     String url = "https://ecomatt.co/";
@@ -83,7 +76,7 @@ public class ChangaCapital extends AppCompatActivity {
                 super.onPageStarted(view, url, favicon);
                 brefresh.setEnabled(false);
                 spinner.setVisibility(View.VISIBLE);
-               Toast toast =  Toast.makeText(ChangaCapital.this,
+               Toast toast =  Toast.makeText(MainPage.this,
                         "Loading...", Toast.LENGTH_LONG);
                toast.setGravity(Gravity.CENTER,0,0);
                toast.show();
@@ -105,9 +98,9 @@ public class ChangaCapital extends AppCompatActivity {
                 // You can redirect to your own page instead getting the default
                 // error page
                 brefresh.setVisibility(View.GONE);
-                Toast.makeText(ChangaCapital.this,
+                Toast.makeText(MainPage.this,
                         "Sorry A Network Error Occurred", Toast.LENGTH_LONG).show();
-                startActivity(new Intent(ChangaCapital.this,chama404.class));
+                startActivity(new Intent(MainPage.this,Error404.class));
                super.onReceivedError(view, errorCode, description, failingUrl);
             }
         });

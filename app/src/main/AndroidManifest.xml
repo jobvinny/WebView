@@ -25,8 +25,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ChangaCapital" />
-        <activity android:name=".chama404" android:screenOrientation="portrait"></activity>
+        <activity android:name=".MainPage" />
+        <activity android:name=".Error404" android:screenOrientation="portrait">
+
+        </activity>
     </application>
 
 </manifest>

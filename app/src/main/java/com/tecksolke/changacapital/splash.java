@@ -4,8 +4,6 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.method.LinkMovementMethod;
-import android.text.util.Linkify;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
@@ -45,7 +43,7 @@ public class splash extends AppCompatActivity {
 //        Linkify.addLinks(textView, Linkify.WEB_URLS);
 
         //start a new activity after splash screen
-        final Intent intent = new Intent(this, ChangaCapital.class);
+        final Intent intent = new Intent(this, MainPage.class);
 
         //start a thread to give a counter
         Thread timer = new Thread() {

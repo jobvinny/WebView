@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class chama404 extends AppCompatActivity {
+public class Error404 extends AppCompatActivity {
 
     Button tryagain;
 
@@ -19,7 +19,7 @@ public class chama404 extends AppCompatActivity {
         tryagain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(chama404.this,ChangaCapital.class));
+                startActivity(new Intent(Error404.this,MainPage.class));
             }
         });
     }
