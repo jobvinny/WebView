@@ -18,30 +18,28 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 public class MainPage extends AppCompatActivity {
-
-    //String url = "https://changacapital.com/androidLogin";
-    String url = "https://ecomatt.co/";
-    WebView changacapitalview;
+    WebView appWebView;
     private ProgressBar spinner;
-    FloatingActionButton brefresh;
+    FloatingActionButton refreshButton;
+    Url url = new Url();
 
     //@SuppressLint("SetJavaScriptEnabled")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_changa_capital);
+        setContentView(R.layout.activity_main_page);
 
         //method to store cookie session and destroy
         CookieSyncManager.createInstance(this);
         CookieSyncManager.getInstance().startSync();
 
 
-        changacapitalview = findViewById(R.id.changawebview);
+        appWebView = findViewById(R.id.appWebView);
         spinner = findViewById(R.id.progressBar);
-        brefresh = findViewById(R.id.refresh);
+        refreshButton = findViewById(R.id.refresh);
 
         //setting button visible to false
-        brefresh.setVisibility(View.GONE);
+        refreshButton.setVisibility(View.GONE);
 
         //progrees
         spinner.setVisibility(View.GONE);
@@ -49,45 +47,45 @@ public class MainPage extends AppCompatActivity {
 
 
         //webview
-        WebSettings webSettings = changacapitalview.getSettings();
+        WebSettings webSettings = appWebView.getSettings();
         webSettings.setLoadWithOverviewMode(true);
         webSettings.setUseWideViewPort(true);
         webSettings.setJavaScriptEnabled(true);
         webSettings.setDomStorageEnabled(true);
-//        changacapitalview.webSettings.setBuiltInZoomControls(true);
-//        changacapitalview.webSettings.setDisplayZoomControls(true);
-//        changacapitalview.webSettings.setSupportZoom(true);
+//        appWebView.webSettings.setBuiltInZoomControls(true);
+//        appWebView.webSettings.setDisplayZoomControls(true);
+//        appWebView.webSettings.setSupportZoom(true);
         webSettings.setDefaultTextEncodingName("utf-8");
         webSettings.setPluginState(WebSettings.PluginState.ON);
         webSettings.setJavaScriptCanOpenWindowsAutomatically(true);
-        changacapitalview.clearCache(true);
-        changacapitalview.clearHistory();
-        changacapitalview.requestFocus();
-        changacapitalview.requestFocusFromTouch();
-        changacapitalview.setWebViewClient(new WebViewClient());
-        changacapitalview.setWebChromeClient(new WebChromeClient());
+        appWebView.clearCache(true);
+        appWebView.clearHistory();
+        appWebView.requestFocus();
+        appWebView.requestFocusFromTouch();
+        appWebView.setWebViewClient(new WebViewClient());
+        appWebView.setWebChromeClient(new WebChromeClient());
 
         //method for checking url state loading
-        changacapitalview.setWebViewClient(new WebViewClient() {
+        appWebView.setWebViewClient(new WebViewClient() {
 
             // This method will be triggered when the Page Started Loading
 
             public void onPageStarted(WebView view, String url, Bitmap favicon) {
                 super.onPageStarted(view, url, favicon);
-                brefresh.setEnabled(false);
+                refreshButton.setEnabled(false);
                 spinner.setVisibility(View.VISIBLE);
-               Toast toast =  Toast.makeText(MainPage.this,
+                Toast toast = Toast.makeText(MainPage.this,
                         "Loading...", Toast.LENGTH_LONG);
-               toast.setGravity(Gravity.CENTER,0,0);
-               toast.show();
+                toast.setGravity(Gravity.CENTER, 0, 0);
+                toast.show();
             }
 
             // This method will be triggered when the Page loading is completed
 
             public void onPageFinished(WebView view, String url) {
                 super.onPageFinished(view, url);
-                brefresh.setEnabled(true);
-                brefresh.setVisibility(View.VISIBLE);
+                refreshButton.setEnabled(true);
+                refreshButton.setVisibility(View.VISIBLE);
                 spinner.setVisibility(View.GONE);
             }
 
@@ -97,18 +95,18 @@ public class MainPage extends AppCompatActivity {
                                         String description, String failingUrl) {
                 // You can redirect to your own page instead getting the default
                 // error page
-                brefresh.setVisibility(View.GONE);
+                refreshButton.setVisibility(View.GONE);
                 Toast.makeText(MainPage.this,
                         "Sorry A Network Error Occurred", Toast.LENGTH_LONG).show();
-                startActivity(new Intent(MainPage.this,Error404.class));
-               super.onReceivedError(view, errorCode, description, failingUrl);
+                startActivity(new Intent(MainPage.this, Error404.class));
+                super.onReceivedError(view, errorCode, description, failingUrl);
             }
         });
-        changacapitalview.loadUrl(url);
-        changacapitalview.loadUrl("javascript:fn()");
+        appWebView.loadUrl(url.appUrl);
+        appWebView.loadUrl("javascript:fn()");
 
 //        //activate downloading
-//        changacapitalview.setDownloadListener(new DownloadListener() {
+//        appWebView.setDownloadListener(new DownloadListener() {
 //            @Override
 //            public void onDownloadStart(String url, String userAgent,
 //                                        String contentDisposition, String mimeType,
@@ -135,10 +133,10 @@ public class MainPage extends AppCompatActivity {
 //        });
 
         //refreshpage
-        brefresh.setOnClickListener(new View.OnClickListener() {
+        refreshButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                changacapitalview.loadUrl(url);
+                appWebView.loadUrl(url.appUrl);
             }
         });
 
@@ -146,8 +144,8 @@ public class MainPage extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        if (changacapitalview.canGoBack()) {
-            changacapitalview.goBack();
+        if (appWebView.canGoBack()) {
+            appWebView.goBack();
         } else {
             super.onBackPressed();
         }

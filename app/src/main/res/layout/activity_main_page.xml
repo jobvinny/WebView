@@ -12,7 +12,7 @@
         android:orientation="vertical">
 
         <WebView
-            android:id="@+id/changawebview"
+            android:id="@+id/appWebView"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent">
         </WebView>
@@ -43,6 +43,7 @@
         tools:layout_editor_absoluteX="329dp"
         tools:layout_editor_absoluteY="427dp"
         android:layout_marginLeft="288dp"
-        android:layout_marginTop="430dp"/>
+        android:layout_marginTop="430dp"
+        android:focusable="true" />
 
 </RelativeLayout>

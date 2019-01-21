@@ -8,18 +8,18 @@ import android.widget.Button;
 
 public class Error404 extends AppCompatActivity {
 
-    Button tryagain;
+    Button tryAgain;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_chama404);
+        setContentView(R.layout.activity_error_404);
 
-        tryagain = findViewById(R.id.tryagain);
-        tryagain.setOnClickListener(new View.OnClickListener() {
+        tryAgain = findViewById(R.id.tryagain);
+        tryAgain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Error404.this,MainPage.class));
+                startActivity(new Intent(Error404.this, MainPage.class));
             }
         });
     }
